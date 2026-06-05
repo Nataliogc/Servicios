@@ -22,16 +22,23 @@
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold text-gray-800">Cumbria Admin</h1>
 
-            <a href="index.html"
-                class="flex items-center gap-2 px-4 py-2 bg-stone-200 rounded-lg text-stone-700 font-bold hover:bg-stone-300 transition text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M15 3h6v6" />
-                    <path d="M10 14 21 3" />
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                </svg>
-                Ir a la App
-            </a>
+            <div class="flex items-center gap-2">
+                <button onclick="saveChanges(this)"
+                    class="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold transition text-sm shadow">
+                    <i data-lucide="save" class="w-4 h-4"></i>
+                    <span>Guardar y Publicar</span>
+                </button>
+                <a href="index.html"
+                    class="flex items-center gap-2 px-4 py-2 bg-stone-200 rounded-lg text-stone-700 font-bold hover:bg-stone-300 transition text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 3h6v6" />
+                        <path d="M10 14 21 3" />
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    </svg>
+                    Ir a la App
+                </a>
+            </div>
         </div>
 
         <!-- TABS -->
@@ -67,10 +74,10 @@
             <!-- Dynamic Form -->
         </div>
 
-        <button onclick="saveChanges()"
+        <button onclick="saveChanges(this)"
             class="fixed bottom-6 right-6 bg-emerald-600 text-white p-4 rounded-full shadow-2xl hover:bg-emerald-700 transition transform hover:scale-105 flex items-center gap-2 z-50">
             <i data-lucide="save" class="w-6 h-6"></i>
-            <span class="font-bold">GUARDAR CAMBIOS</span>
+            <span class="font-bold">GUARDAR Y PUBLICAR</span>
         </button>
     </div>
 
@@ -530,9 +537,14 @@
                             <textarea rows="2" onchange="appData.restaurante.dailyMenu.includes = this.value" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-stone-500">${menu.includes || ''}</textarea>
                         </div>
 
-                        <div class="bg-blue-50 p-4 rounded text-xs text-blue-800">
+                        <div class="bg-blue-50 p-4 rounded text-xs text-blue-800 mb-4">
                             <strong>Nota:</strong> Los números entre paréntesis, ej: (1/4), se mostrarán automáticamente en la app como alérgenos.
                         </div>
+
+                        <button onclick="saveChanges(this)" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition flex items-center justify-center gap-2 shadow-lg">
+                            <i data-lucide="save" class="w-5 h-5"></i>
+                            <span>Guardar y Publicar Menú del Día</span>
+                        </button>
                     </div>
                 `;
             }
@@ -864,10 +876,14 @@
             }
         }
 
-        window.saveChanges = async function () {
-            const btn = document.querySelector('button[onclick="saveChanges()"]');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i data-lucide="loader-2" class="w-6 h-6 animate-spin"></i> Guardando...';
+        window.saveChanges = async function (clickedBtn) {
+            // Use the clicked button if passed, or find any save button in the DOM
+            const btn = clickedBtn || document.querySelector('button[onclick*="saveChanges"]');
+            const originalText = btn ? btn.innerHTML : 'Guardar';
+            if (btn) {
+                btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Guardando...';
+                if (window.lucide) window.lucide.createIcons();
+            }
 
             try {
                 // Debug: Log tourism data before save
@@ -890,8 +906,10 @@
                 console.error(err);
                 alert('Error al guardar: ' + err.message);
             } finally {
-                btn.innerHTML = originalText;
-                lucide.createIcons();
+                if (btn) {
+                    btn.innerHTML = originalText;
+                    if (window.lucide) window.lucide.createIcons();
+                }
             }
         }
 
