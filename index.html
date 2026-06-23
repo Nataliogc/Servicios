@@ -895,9 +895,9 @@
                 console.log("App Data Loaded:", window.appData);
                 window.renderApp(); // Call the global render function
                 
-                // Detect URL parameter to open specific modals (e.g., ?modal=minibar)
+                // Detect URL parameter to open specific modals (e.g., ?servicio=minibar)
                 const urlParams = new URLSearchParams(window.location.search);
-                const targetModal = urlParams.get('modal');
+                const targetModal = urlParams.get('servicio') || urlParams.get('modal');
                 if (targetModal) {
                     setTimeout(() => {
                         if (typeof openModal === 'function') {
