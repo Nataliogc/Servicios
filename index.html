@@ -481,7 +481,9 @@
                         <div>
                             <h4 class="font-bold text-stone-800 text-sm">Piscina</h4>
                             <p class="text-xs text-stone-500 mt-1" id="info-pool-desc">...</p>
-                            <p class="text-xs text-stone-400" id="info-pool-schedule">...</p>
+                            <p class="text-xs text-stone-600 font-semibold mt-1" id="info-pool-dates"></p>
+                            <p class="text-xs text-stone-500 italic mt-1" id="info-pool-obs"></p>
+                            <p class="text-xs text-stone-400 mt-1" id="info-pool-schedule">...</p>
                         </div>
                     </div>
                     <div class="bg-white p-5 rounded-3xl shadow-sm">
@@ -1105,6 +1107,25 @@
 
                 // Pool & Gym
                 document.getElementById('info-pool-desc').textContent = appData.info.pool.text;
+                
+                // Formateo de fechas
+                let datesText = '';
+                if (appData.info.pool.openDate && appData.info.pool.closeDate) {
+                    datesText = `Apertura: ${appData.info.pool.openDate} | Cierre: ${appData.info.pool.closeDate}`;
+                } else if (appData.info.pool.openDate) {
+                    datesText = `Apertura: ${appData.info.pool.openDate}`;
+                } else if (appData.info.pool.closeDate) {
+                    datesText = `Cierre: ${appData.info.pool.closeDate}`;
+                }
+                
+                const datesEl = document.getElementById('info-pool-dates');
+                datesEl.textContent = datesText;
+                datesEl.style.display = datesText ? 'block' : 'none';
+
+                const obsEl = document.getElementById('info-pool-obs');
+                obsEl.textContent = appData.info.pool.observations || '';
+                obsEl.style.display = appData.info.pool.observations ? 'block' : 'none';
+
                 document.getElementById('info-pool-schedule').textContent = appData.info.pool.schedule;
                 document.getElementById('info-gym-desc').textContent = appData.info.gym.text;
                 document.getElementById('info-gym-schedule').textContent = `${appData.info.gym.schedule_week} | ${appData.info.gym.schedule_weekend}`;
