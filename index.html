@@ -894,6 +894,17 @@
                 window.appData = await DB.get();
                 console.log("App Data Loaded:", window.appData);
                 window.renderApp(); // Call the global render function
+                
+                // Detect URL parameter to open specific modals (e.g., ?modal=minibar)
+                const urlParams = new URLSearchParams(window.location.search);
+                const targetModal = urlParams.get('modal');
+                if (targetModal) {
+                    setTimeout(() => {
+                        if (typeof openModal === 'function') {
+                            openModal(targetModal + '-modal');
+                        }
+                    }, 300);
+                }
             } catch (e) {
                 console.error("Error loading app data:", e);
                 alert("Error cargando datos. Por favor recarga.");
