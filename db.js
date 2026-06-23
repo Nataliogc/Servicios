@@ -211,7 +211,10 @@ const DEFAULT_DATA = {
         },
         pool: {
             text: "Exterior. Verano. De junio a septiembre.",
-            schedule: "10:00 - 21:00"
+            schedule: "10:00 - 21:00",
+            openDate: "15/06",
+            closeDate: "15/09",
+            observations: ""
         },
         gym: {
             text: "Acceso gratuito a zona de máquinas. Clases colectivas consultar en recepción.",

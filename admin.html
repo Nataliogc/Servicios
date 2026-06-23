@@ -455,6 +455,9 @@
                 html += `<h3 class="font-bold mt-6 mb-4 border-b pb-2">Piscina & Gym</h3>`;
                 html += field('Piscina Desc.', `appData.info.pool.text`, data.pool.text);
                 html += field('Piscina Horario', `appData.info.pool.schedule`, data.pool.schedule);
+                html += field('Piscina Fecha Apertura', `appData.info.pool.openDate`, data.pool.openDate || '');
+                html += field('Piscina Fecha Cierre', `appData.info.pool.closeDate`, data.pool.closeDate || '');
+                html += field('Piscina Observaciones', `appData.info.pool.observations`, data.pool.observations || '', 'textarea');
                 html += field('Gym Desc.', `appData.info.gym.text`, data.gym.text);
                 html += field('Gym Horario Sem.', `appData.info.gym.schedule_week`, data.gym.schedule_week);
 

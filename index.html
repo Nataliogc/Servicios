@@ -482,6 +482,11 @@
                             <h4 class="font-bold text-stone-800 text-sm">Piscina</h4>
                             <p class="text-xs text-stone-500 mt-1" id="info-pool-desc">...</p>
                             <p class="text-xs text-stone-400" id="info-pool-schedule">...</p>
+                            <p class="text-xs text-stone-500 mt-1" id="info-pool-dates" style="display: none;">
+                                Apertura: <span id="info-pool-open" class="font-semibold text-stone-700"></span> | 
+                                Cierre: <span id="info-pool-close" class="font-semibold text-stone-700"></span>
+                            </p>
+                            <p class="text-xs text-amber-600 mt-1 italic" id="info-pool-obs" style="display: none;"></p>
                         </div>
                     </div>
                     <div class="bg-white p-5 rounded-3xl shadow-sm">
@@ -1108,6 +1113,26 @@
                 // Pool & Gym
                 document.getElementById('info-pool-desc').textContent = appData.info.pool.text;
                 document.getElementById('info-pool-schedule').textContent = appData.info.pool.schedule;
+                
+                // Pool Dates
+                const poolDatesEl = document.getElementById('info-pool-dates');
+                if (appData.info.pool.openDate || appData.info.pool.closeDate) {
+                    poolDatesEl.style.display = 'block';
+                    document.getElementById('info-pool-open').textContent = appData.info.pool.openDate || '?';
+                    document.getElementById('info-pool-close').textContent = appData.info.pool.closeDate || '?';
+                } else {
+                    poolDatesEl.style.display = 'none';
+                }
+
+                // Pool Observations
+                const poolObsEl = document.getElementById('info-pool-obs');
+                if (appData.info.pool.observations) {
+                    poolObsEl.textContent = appData.info.pool.observations;
+                    poolObsEl.style.display = 'block';
+                } else {
+                    poolObsEl.style.display = 'none';
+                }
+
                 document.getElementById('info-gym-desc').textContent = appData.info.gym.text;
                 document.getElementById('info-gym-schedule').textContent = `${appData.info.gym.schedule_week} | ${appData.info.gym.schedule_weekend}`;
 
