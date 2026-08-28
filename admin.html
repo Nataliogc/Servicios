@@ -457,11 +457,6 @@
                 html += `<h3 class="font-bold mt-6 mb-4 border-b pb-2">Parking</h3>`;
                 html += field('Texto', `appData.info.parking.text`, data.parking.text, 'textarea');
 
-                html += `<h3 class="font-bold mt-6 mb-4 border-b pb-2">Otros Horarios</h3>`;
-                html += field('Rest. Comidas', `appData.info.restaurant.schedule_lunch`, data.restaurant.schedule_lunch);
-                html += field('Rest. Cenas', `appData.info.restaurant.schedule_dinner`, data.restaurant.schedule_dinner);
-                html += field('Cafetería', `appData.info.cafeteria.schedule`, data.cafeteria.schedule);
-                html += field('Room Service', `appData.info.roomService.schedule`, data.roomService.schedule);
             }
 
             // Categories & Items (Restaurant, Room Service, Minibar)

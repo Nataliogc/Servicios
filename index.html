@@ -460,8 +460,7 @@
                 <div class="bg-white p-5 rounded-3xl shadow-sm space-y-4">
                     <div>
                         <h4 class="font-bold text-stone-800 text-sm mb-1">Restaurante</h4>
-                        <p class="text-xs text-stone-500" id="info-restaurant-lunch">Comidas: ...</p>
-                        <p class="text-xs text-stone-500" id="info-restaurant-dinner">Cenas: ...</p>
+                        <p class="text-xs text-stone-500" id="info-restaurant-schedule">...</p>
                     </div>
                     <div class="border-t pt-2">
                         <h4 class="font-bold text-stone-800 text-sm mb-1">Cafetería</h4>
@@ -1134,10 +1133,9 @@
                 document.getElementById('info-parking-desc').textContent = appData.info.parking.text;
 
                 // Others (Schedules)
-                document.getElementById('info-restaurant-lunch').textContent = `Comidas: ${appData.info.restaurant.schedule_lunch}`;
-                document.getElementById('info-restaurant-dinner').textContent = `Cenas: ${appData.info.restaurant.schedule_dinner}`;
-                document.getElementById('info-cafeteria-schedule').textContent = appData.info.cafeteria.schedule;
-                document.getElementById('info-roomservice-schedule').textContent = appData.info.roomService.schedule;
+                document.getElementById('info-restaurant-schedule').textContent = appData.restaurante.schedule;
+                document.getElementById('info-cafeteria-schedule').textContent = appData.cafeteria.schedule;
+                document.getElementById('info-roomservice-schedule').textContent = appData.roomService.schedule;
             }
 
             // Tourism

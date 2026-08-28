@@ -227,16 +227,12 @@ const DEFAULT_DATA = {
             location: "Planta S1"
         },
         roomService: {
-            schedule: "13:30 - 15:00 / 21:00 - 22:30",
             phone: "1181"
         },
         cafeteria: {
-            schedule: "07:00 - 11:30 / 13:00 - 16:30 / 19:00 - 00:00",
             location: "Planta SS"
         },
         restaurant: {
-            schedule_lunch: "13:30 - 16:00 (Lun-Dom)",
-            schedule_dinner: "20:00 - 23:00 (Lun-Sab)",
             location: "Planta SS"
         },
         spa: {
