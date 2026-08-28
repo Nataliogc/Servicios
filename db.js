@@ -210,11 +210,19 @@ const DEFAULT_DATA = {
             location: "Planta SS"
         },
         pool: {
+<<<<<<< HEAD
             text: "Exterior. Verano. De julio a septiembre",
             openDate: "",
             closeDate: "",
             observations: "",
             schedule: "10:00 - 21:00"
+=======
+            text: "Exterior. Verano. De junio a septiembre.",
+            schedule: "10:00 - 21:00",
+            openDate: "15/06",
+            closeDate: "15/09",
+            observations: ""
+>>>>>>> e202a37f0aad657c44b0450e389dbd7a9ff9943e
         },
         gym: {
             text: "Acceso gratuito a zona de máquinas. Clases colectivas consultar en recepción.",
